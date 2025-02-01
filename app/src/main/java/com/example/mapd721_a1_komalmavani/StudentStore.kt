@@ -9,7 +9,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class UserStore(private val context: Context) {
+class StudentStore(private val context: Context) {
     companion object {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("studentData")
         private val ID_KEY = stringPreferencesKey("id")
@@ -21,7 +21,7 @@ class UserStore(private val context: Context) {
         preferences[ID_KEY] ?: "922"
     }
 
-    val getUserName: Flow<String> = context.dataStore.data.map { preferences ->
+    val getStudentName: Flow<String> = context.dataStore.data.map { preferences ->
         preferences[STUDENT_NAME_KEY] ?: ""
     }
 
